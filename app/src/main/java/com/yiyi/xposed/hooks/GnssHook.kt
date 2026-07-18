@@ -214,7 +214,7 @@ object GnssHook {
     private fun hookGnssStatusCallback(classLoader: ClassLoader) {
         try {
             val callbackClass = XposedHelpers.findClass(
-                "android.location.GnssStatus$Callback", classLoader
+                "android.location.GnssStatus\$Callback", classLoader
             )
 
             // onSatelliteStatusChanged(GnssStatus) → 无需修改，已hook GnssStatus本身

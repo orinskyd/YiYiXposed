@@ -128,7 +128,7 @@ object AntiDetectHook {
                         override fun beforeHookedMethod(param: MethodHookParam) {
                             val pkgName = param.args[0] as? String ?: return
                             if (pkgName in hiddenPackages) {
-                                throw XposedHelpers.newInstance(nameNotFoundExceptionClass, pkgName)
+                                throw XposedHelpers.newInstance(nameNotFoundExceptionClass, pkgName) as Throwable as Throwable
                             }
                         }
                     }
@@ -147,7 +147,7 @@ object AntiDetectHook {
                         override fun beforeHookedMethod(param: MethodHookParam) {
                             val pkgName = param.args[0] as? String ?: return
                             if (pkgName in hiddenPackages) {
-                                throw XposedHelpers.newInstance(nameNotFoundExceptionClass, pkgName)
+                                throw XposedHelpers.newInstance(nameNotFoundExceptionClass, pkgName) as Throwable as Throwable
                             }
                         }
                     }
@@ -288,7 +288,7 @@ object AntiDetectHook {
                         if (cmd.contains("su") || cmd.contains("which su") || cmd.contains("magisk")) {
                             // 抛出IOException模拟su不存在
                             val ioExceptionClass = XposedHelpers.findClass("java.io.IOException", classLoader)
-                            throw XposedHelpers.newInstance(ioExceptionClass, "No such file or directory")
+                            throw XposedHelpers.newInstance(ioExceptionClass, "No such file or directory") as Throwable as Throwable
                         }
                     }
                 }
@@ -305,7 +305,7 @@ object AntiDetectHook {
                         for (cmd in cmds) {
                             if (cmd.contains("su") || cmd.contains("magisk")) {
                                 val ioExceptionClass = XposedHelpers.findClass("java.io.IOException", classLoader)
-                                throw XposedHelpers.newInstance(ioExceptionClass, "No such file or directory")
+                                throw XposedHelpers.newInstance(ioExceptionClass, "No such file or directory") as Throwable as Throwable
                             }
                         }
                     }
