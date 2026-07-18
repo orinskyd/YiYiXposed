@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">依依助手</string>
+    <string name="xposed_description">虚拟定位助手 - 需配合VirtualApp使用，全面Hook钉钉等应用的定位API</string>
+
+    <!-- Main UI -->
+    <string name="title_main">依依助手 - 虚拟定位</string>
+    <string name="hint_search">搜索地点...</string>
+    <string name="btn_start">启动模拟</string>
+    <string name="btn_stop">停止模拟</string>
+    <string name="btn_select_location">选择此位置</string>
+    <string name="status_active">模拟运行中</string>
+    <string name="status_inactive">模拟已停止</string>
+    <string name="status_not_in_va">提示：当前运行在VirtualApp外部\n请在VirtualApp容器中安装并运行此模块\n然后在VirtualApp的Xposed设置中启用本模块</string>
+
+    <!-- Settings -->
+    <string name="settings_accuracy">定位精度（米）</string>
+    <string name="settings_altitude">海拔高度（米）</string>
+    <string name="settings_speed">移动速度（米/秒）</string>
+    <string name="settings_randomize">随机偏移半径（米）</string>
+    <string name="settings_wifi_spoof">模拟WiFi信息</string>
+    <string name="settings_cell_spoof">模拟基站信息</string>
+    <string name="settings_gnss_spoof">模拟卫星状态</string>
+    <string name="settings_sensor_spoof">模拟传感器数据</string>
+
+    <string name="current_lat">纬度</string>
+    <string name="current_lon">经度</string>
+    <string name="current_address">地址</string>
+
+    <string name="saved_locations">已保存位置</string>
+    <string name="save_current">保存当前位置</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+
+    <string name="name_input">位置名称</string>
+    <string name="lat_input">纬度</string>
+    <string name="lon_input">经度</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="xposed_scope">
+        <item>com.alibaba.android.rimet</item>
+        <item>android</item>
+        <item>com.android.phone</item>
+        <item>com.tencent.mobileqq</item>
+        <item>com.tencent.wework</item>
+    </string-array>
+</resources>
