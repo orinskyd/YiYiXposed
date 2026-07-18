@@ -41,7 +41,7 @@ android {
 
 dependencies {
     // Xposed API - compileOnly, provided by framework at runtime
-    compileOnly 'de.robv.android.xposed:api:82'
+    compileOnly project(':xposed-stubs')
 
     // AndroidX
     implementation 'androidx.core:core-ktx:1.12.0'
