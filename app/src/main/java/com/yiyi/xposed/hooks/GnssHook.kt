@@ -212,35 +212,8 @@ object GnssHook {
     // 拦截卫星状态回调，确保回调数据一致
     // ========================================
     private fun hookGnssStatusCallback(classLoader: ClassLoader) {
-        try {
-            val callbackClass = XposedHelpers.findClass(
-                "android.location.GnssStatus\$Callback", classLoader
-            )
-
-            // onSatelliteStatusChanged(GnssStatus) → 无需修改，已hook GnssStatus本身
-            // 但确保回调被触发
-            XposedBridge.log("$TAG: ✅ GnssStatus.Callback registered (uses GnssStatus hooks)")
-        } catch (e: Throwable) {
-            XposedBridge.log("$TAG: GnssStatus.Callback not found")
-        }
-
-        // 兼容旧版 GpsStatus (API < 24)
-        try {
-            val gpsStatusClass = XposedHelpers.findClass("android.location.GpsStatus", classLoader)
-
-            // getMaxSatellites()
-            try {
-                XposedHelpers.findAndHookMethod(gpsStatusClass, "getMaxSatellites", object : XC_MethodHook() {
-                    override fun afterHookedMethod(param: MethodHookParam) {
-                        val config = PrefsHelper.load()
-                        if (config.enabled && config.gnssSpoof) param.result = SATELLITE_COUNT
-                    }
-                })
-            } catch (e: Throwable) {}
-
-            XposedBridge.log("$TAG: ✅ GpsStatus hooks installed (legacy)")
-        } catch (e: Throwable) {
-            // GpsStatus已弃用，忽略
-        }
+        // GnssStatus.Callback 使用上面已安装的 GnssStatus hooks
+        // 无需额外hook - Callback接收的GnssStatus对象已被hookGnssStatus()拦截
+        XposedBridge.log("$TAG: ✅ GnssStatus.Callback uses GnssStatus hooks (no additional hooking needed)")
     }
 }
